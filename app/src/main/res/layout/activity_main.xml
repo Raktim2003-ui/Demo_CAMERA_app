@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/guideline_vertical"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.33"/>
+        app:layout_constraintGuide_percent="0.5"/>
 
     <Button
         android:id="@+id/btnTakePhoto"
@@ -32,38 +32,44 @@
         android:layout_marginBottom="32dp"
         android:text="Take Photo"
         android:textColor="@color/black"
-        android:backgroundTint="#856262"
+        android:backgroundTint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/guideline_vertical"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
+    <ImageButton
         android:id="@+id/btnRotateCamera"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:text="Rotate"
-        android:textColor="@color/black"
-        android:backgroundTint="#EBE0E0"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnTakePhoto"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/rotate_icon"
+        android:background="@drawable/btn_round_shape"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/guideline_vertical2"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.66"/>
     <Button
         android:id="@+id/btnRecordVideo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
+        android:backgroundTint="@drawable/recording_btn_clr_change"
+        android:textColor="@color/black"
         android:text="Record Video"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnTakePhoto" />
+        app:layout_constraintStart_toEndOf="@+id/guideline_vertical" />
+
+    <Chronometer
+        android:id="@+id/chronometer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp"
+        android:textColor="@color/white"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 
