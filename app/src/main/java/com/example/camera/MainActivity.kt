@@ -27,6 +27,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.camera.VideoPlayerActivity.Companion.mVideoFile
 import com.example.camera.databinding.ActivityMainBinding
 import java.io.File
 import java.text.SimpleDateFormat
@@ -41,6 +42,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var outputDirectory: File
     private var cameraSelector: CameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
+    private lateinit var videoFile: File
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -163,7 +165,7 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun recordVideo() {
-        val videoFile = File(
+         videoFile = File(
             outputDirectory,
             SimpleDateFormat(Constants.FILE_NAME_FORMAT, Locale.getDefault())
                 .format(System.currentTimeMillis()) + ".mp4"
@@ -190,10 +192,11 @@ class MainActivity : AppCompatActivity() {
                     }
 
                     is VideoRecordEvent.Finalize -> {
-
+                       // val videoFile = File((recordEvent as (VideoRecordEvent.Finalize)).outputResults.outputUri.path)
+                        mVideoFile= videoFile
                         val videoUri = recordEvent.outputResults.outputUri
                         val intent = Intent(this, VideoPlayerActivity::class.java)
-                        intent.putExtra("VIDEO_URI", videoUri)
+                        intent.putExtra("VIDEO_PATH", videoFile.path)
                         startActivity(intent)
 
                         binding.chronometer.stop()
